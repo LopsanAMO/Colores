@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+{% load staticfiles %}
+<html ng-app="usuario_serv">
+<head>
+    <meta name="google-site-verification" content="oIwiD9Fl0-hIEI9k4K3TMObJ-Ph7zA4IlRlkNhkB5Os" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
+  <style type="text/css" media="screen">
+      .color{
+          background-color: transparent;
+      }
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript"
+  src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 
+  <!-- CSS  -->
+
+</head>
+<body >
+  <div ng-controller="serviciosController as serv">
+    <h1>ID: {{serv.color.name}}</h1>
+  </div>
+</body>
+</html>
