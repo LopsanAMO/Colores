@@ -17,16 +17,56 @@
 </head>
 <body ng-app="usuario_serv">
   <div ng-controller="serviciosController as serv">
-    <button id="boton "ng-click="extraerx2()">Enviar</button>
-    {% verbatim %}
-    <h1>ID: {{serv.thing.$$state.value}}</h1>
+      {% verbatim %}
+     
+      <table >
+         <thead >
+             <tr>
+                <td>
+                    nombre
+                </td>
+                <td>
+                    descripcion
+                </td>
+                <td>
+                    hexadecimal
+                </td>
+                <td>
+                    rojo
+                </td>
+                <td>
+                    verde
+                </td>
+                <td>
+                    azul
+                </td>
+             </tr>
+         </thead>
+         <tbody ng-repeat="diccionario in serv.diccs.$$state.value">
+             <tr>
+                 <td>
+                    {{diccionario.nombre}}
+                 </td>
+                 <td>
+                    {{diccionario.descripcion}}
+                 </td>
+                 <td>
+                    {{diccionario.hexadeciamal}}
+                 </td>
+                 <td>
+                    {{diccionario.rojo}}
+                 </td>
+                 <td>
+                    {{diccionario.verde}}
+                 </td>
+                 <td>
+                    {{diccionario.azul}}
+                 </td>
+             </tr>
+         </tbody>
 
-    <ul>
-      <li ng-repeat="id in serv.ids">
-        {{id}}
-      </li>
-    <ul>
-        {% endverbatim %}
+      </table>
+      {% endverbatim %}
   </div>
 </body>
 </html>
