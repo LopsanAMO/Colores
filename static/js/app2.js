@@ -1,35 +1,36 @@
+(function(){
+  var app = angular.module("appPost", []);
+    app.controller("PostCtrl", function ($scope, $http) {
 
- (function (){
-     var app = angular.module('usuario_serv', []);
-        app.controller('serviciosController', function($scope, $http) {
-         var nombre = [];
-         nombre.push(extraer($http));
-        console.log("hola" + nombre[0]);
-         this.color = {
-            name : nombre.data.name,
-         };
+    $scope.Enviar = function () {
+       // use $.param jQuery function to serialize data from JSON
+        var data = $.param({
+            hexadecimal: 'DDDDEE',
+            name: $scope.name,
+            description: $scope.description,
+            green: $scope.green,
+            red: $scope.red,
+            blue: $scope.blue,
+
         });
+        console.log(data);
+        var config = {
+            headers : {
+                   'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
 
-        function extraer($http) {
+        $http.post('/API/create', data, config)
+          .success(function (data, status, headers, config) {
+              $scope.PostDataResponse = data;
+            })
+            .error(function (data, status, header, config) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });
+    };
 
-              $http.get("/API/colores_list/")
-            .then(function(response) {
-                var nombres = [];
-                console.log(response.data.length);
-                cantidad = response.data.length;
-                for (i = 0; i < cantidad; i++) {
-                    nombres.push(response.data[i].name);
-                }
-                //console.log(hola);
-                for (j = 0; j < cantidad; j++) {
-                    console.log(nombres[j]);
-                }
-                console.log(nombres);
-                return nombres;
-            });
-        }
-        function things(lista){
-            console.log(lista);
-            return lista;
-        }
-  })();
+});
+})();
